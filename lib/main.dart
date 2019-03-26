@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './pages/thread_list.dart';
 
 void main() {
   runApp(ScheduleApp());
@@ -23,7 +24,7 @@ class ScheduleApp extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
+              ThreadListPage(),
               Icon(Icons.directions_transit),
               Icon(Icons.directions_bike),
             ],
