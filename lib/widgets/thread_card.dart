@@ -1,23 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/thread_model.dart';
+import '../widgets/ui_elements/svg_image.dart';
 
 class ThreadCard extends StatelessWidget {
   final ThreadModel threadModel;
 
   ThreadCard(this.threadModel);
-
-  Widget _buildTitleRow() {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Flexible(
-              child: Text(threadModel.name),
-            ),
-          ],
-        ));
-  }
 
   Widget _buildLogoRow() {
     return Container(
@@ -26,7 +14,27 @@ class ThreadCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Flexible(
-              child: Text(threadModel.name),
+              child: new Center(
+                child: Text(threadModel.name),
+              ),
+            ),
+          ],
+        ));
+  }
+
+  Widget _buildTitleRow() {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Flexible(
+              child: Center(
+                child: Text(
+                  threadModel.name,
+                  style: TextStyle(fontSize: 26.0),
+                ),
+              ),
             ),
           ],
         ));
@@ -37,7 +45,12 @@ class ThreadCard extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
       child: Row(
         children: <Widget>[
-          Text(threadModel.description)
+          Center(
+            child: Text(
+              threadModel.description,
+              style: TextStyle(fontSize: 16.0),
+            ),
+          )
         ],
       ),
     );
@@ -48,14 +61,8 @@ class ThreadCard extends StatelessWidget {
     return Card(
       child: Column(
         children: <Widget>[
-          _buildTitleRow(),
-          SizedBox(
-            height: 5.0,
-          ),
           _buildLogoRow(),
-          SizedBox(
-            height: 5.0,
-          ),
+          _buildTitleRow(),
           _buildDescriptionRow(),
         ],
       ),

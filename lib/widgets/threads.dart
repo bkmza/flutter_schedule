@@ -10,7 +10,7 @@ class Threads extends StatelessWidget {
             onTap: () {
               String selectedName = threads[index].name;
               selectName(selectedName);
-              Navigator.pushNamed<bool>(context, '/names/' + selectedName)
+              Navigator.pushNamed<bool>(context, '/thread/' + selectedName)
                   .then((_) => selectName(null));
             },
             child: ThreadCard(threads[index]));

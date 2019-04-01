@@ -1,0 +1,1 @@
+final String joeschmoeAPI = "http://joeschmoe.io/api/v1";
