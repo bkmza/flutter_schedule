@@ -31,8 +31,10 @@ class _HomePageState extends State<HomePage> {
             builder:
                 (BuildContext context, Widget widget, GlobalService service) {
               return IconButton(
-                icon: Icon(Icons.refresh),
-                onPressed: () => {},
+                icon: Icon(Icons.settings),
+                onPressed: () => {
+                      Navigator.pushNamed<bool>(context, '/settings'),
+                    },
               );
             },
           )
