@@ -9,11 +9,9 @@ class SvgImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 1.0),
-      child: new Center(
-        child: new SvgPicture.asset(
-          path,
-        ),
+      child: new SvgPicture.asset(
+        path,
+        width: 300.0,
       ),
     );
   }

@@ -9,9 +9,9 @@ abstract class BaseThreadService {
 class ThreadService implements BaseThreadService {
   List<ThreadModel> getThreads() {
     List<ThreadModel> threads = new List<ThreadModel>();
-    threads.add(ThreadModel(id: "1", name: "Technology", description: "desc 1", logo: "assets/cartman.svg"));
-    threads.add(ThreadModel(id: "2",name: "People", description: "desc 2", logo: "assets/cartman.svg"));
-    threads.add(ThreadModel(id: "3",name: "Workshops", description: "desc 3", logo: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "1", name: "Technology", description: "desc 1", imageURL: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "2",name: "People", description: "desc 2", imageURL: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "3",name: "Workshops", description: "desc 3", imageURL: "assets/cartman.svg"));
     return threads;
   }
 }
@@ -19,9 +19,9 @@ class ThreadService implements BaseThreadService {
 class ThreadServiceMock implements BaseThreadService {
   List<ThreadModel> getThreads() {
     List<ThreadModel> threads = new List<ThreadModel>();
-    threads.add(ThreadModel(id: "1", name: "Technology", description: "desc 1", logo: "assets/cartman.svg"));
-    threads.add(ThreadModel(id: "2",name: "People", description: "desc 2", logo: "assets/cartman.svg"));
-    threads.add(ThreadModel(id: "3",name: "Workshops", description: "desc 3", logo: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "1", name: "Technology", description: "desc 1", imageURL: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "2",name: "People", description: "desc 2", imageURL: "assets/cartman.svg"));
+    threads.add(ThreadModel(id: "3",name: "Workshops", description: "desc 3", imageURL: "assets/cartman.svg"));
     return threads;
   }
 }

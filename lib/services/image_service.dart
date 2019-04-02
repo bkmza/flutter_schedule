@@ -7,6 +7,7 @@ import 'package:sprintf/sprintf.dart';
 abstract class BaseImageService {
   void getAvatar(String name);
 }
+
 class ImageService implements BaseImageService {
   Widget getAvatar(String name) {
     return SvgNetworkImage(
@@ -16,6 +17,6 @@ class ImageService implements BaseImageService {
 
 class ImageServiceMock implements BaseImageService {
   Widget getAvatar(String name) {
-    return SvgImage("assets/cartman.svg");
+    return SvgImage(sprintf("assets/speakers/%s.svg", [name.toLowerCase()]));
   }
 }

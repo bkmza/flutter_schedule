@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import '../models/thread_model.dart';
+import 'package:scoped_model/scoped_model.dart';
+
 import '../models/lecture_model.dart';
 import './lecture_card.dart';
+import '../services/global_service.dart';
 
 class Lectures extends StatelessWidget {
   Widget _buildList(List<LectureModel> lectures, Function selectName) {
@@ -23,6 +25,9 @@ class Lectures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildList(LectureModel.generateLectures(), (String name) => {});
+    return ScopedModelDescendant<GlobalService>(
+        builder: (BuildContext context, Widget widget, GlobalService service) {
+      return _buildList(service.lectureService.getAll(), (String name) => {});
+    });
   }
 }
