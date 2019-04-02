@@ -41,7 +41,8 @@ class _State extends State<ScheduleApp> {
           }
           if (pathElements[1] == 'settings') {
             return CustomRoute<bool>(
-              builder: (BuildContext context) => SettingsPage(),
+              builder: (BuildContext context) =>
+                  SettingsPage(_service.isOfflineMode),
             );
           }
           return null;

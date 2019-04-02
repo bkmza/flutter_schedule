@@ -66,7 +66,7 @@ class LectureCard extends StatelessWidget {
         return Card(
           child: Column(
             children: <Widget>[
-              _buildLogoRow(service.imageService.getJoeschmoeAvatar),
+              _buildLogoRow(service.imageService.getAvatar),
               _buildTitleRow(),
               _buildDescriptionRow(),
             ],

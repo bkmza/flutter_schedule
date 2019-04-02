@@ -4,6 +4,10 @@ import 'package:scoped_model/scoped_model.dart';
 import '../../services/global_service.dart';
 
 class SettingsPage extends StatefulWidget {
+  final bool isOfflineMode;
+
+  SettingsPage(this.isOfflineMode);
+
   @override
   State<StatefulWidget> createState() {
     return _SettingsState();
@@ -11,10 +15,11 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsState extends State<SettingsPage> {
-  bool _offlineMode = true;
+  bool _offlineMode;
 
   @override
   initState() {
+    _offlineMode = widget.isOfflineMode;
     super.initState();
   }
 

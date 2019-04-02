@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import '../models/thread_model.dart';
 import '../widgets/thread_card.dart';
+import '../services/global_service.dart';
 
 class Threads extends StatelessWidget {
   Widget _buildList(List<ThreadModel> threads, Function selectName) {
@@ -22,8 +24,9 @@ class Threads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildList(
-        ThreadModel.generateThreads(),
-        (String name) => {});
+    return ScopedModelDescendant<GlobalService>(
+        builder: (BuildContext context, Widget widget, GlobalService service) {
+      return _buildList(service.threadService.getThreads(), (String name) => {});
+    });
   }
 }
