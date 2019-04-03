@@ -7,27 +7,34 @@ import '../services/global_service.dart';
 
 class Lectures extends StatelessWidget {
   Widget _buildList(List<LectureModel> lectures, Function selectName) {
-    Widget nameCard = ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return new InkWell(
-            onTap: () {
-              String selectedLectureId = lectures[index].id;
-              Navigator.pushNamed<bool>(
-                      context, '/lecture/' + selectedLectureId)
-                  .then((_) => selectName(null));
-            },
-            child: LectureCard(lectures[index]));
-      },
-      itemCount: lectures.length,
-    );
-    return nameCard;
+    Widget card;
+    if (lectures.length > 0) {
+      card = ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return new InkWell(
+              onTap: () {
+                String selectedLectureId = lectures[index].id;
+                Navigator.pushNamed<bool>(
+                        context, '/lecture/' + selectedLectureId)
+                    .then((_) => selectName(null));
+              },
+              child: LectureCard(lectures[index]));
+        },
+        itemCount: lectures.length,
+      );
+    } else {
+      card = Center(
+        child: Text('No speakers found, something went wrong'),
+      );
+    }
+    return card;
   }
 
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<GlobalService>(
         builder: (BuildContext context, Widget widget, GlobalService service) {
-      return _buildList(service.lectureService.getAll(), (String name) => {});
+      return _buildList(service.lectureService.lectures, (String name) => {});
     });
   }
 }

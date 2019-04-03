@@ -30,8 +30,12 @@ class GlobalService extends Model {
       _lectureServiceInstance = LectureServiceMock();
     } else {
       _imageServiceInstance = ImageService();
-      _threadServiceInstance = ThreadService();
-      _lectureServiceInstance = LectureService();
+      _threadServiceInstance = ThreadService(this);
+      _lectureServiceInstance = LectureService(this);
     }
+  }
+
+  void notify() {
+    notifyListeners();
   }
 }

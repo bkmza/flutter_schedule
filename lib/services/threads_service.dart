@@ -5,17 +5,25 @@ import 'package:flutter/material.dart';
 import '../shared/global_config.dart';
 import 'package:sprintf/sprintf.dart';
 import '../models/thread_model.dart';
+import './global_service.dart';
 
 abstract class BaseThreadService {
+  List<ThreadModel> threads;
   List<ThreadModel> getThreads();
 }
 
 class ThreadService implements BaseThreadService {
-  List<ThreadModel> _threads = new List<ThreadModel>();
+  GlobalService globalService;
+
+  ThreadService(this.globalService) {
+    getThreads();
+  }
+
+  List<ThreadModel> threads = new List<ThreadModel>();
 
   List<ThreadModel> getThreads() {
     fetchThreads();
-    return _threads;
+    return threads;
   }
 
   Future<Null> fetchThreads() {
@@ -25,6 +33,7 @@ class ThreadService implements BaseThreadService {
       final List<ThreadModel> fetchedThreadList = [];
       final Map<String, dynamic> threadListData = json.decode(response.body);
       if (threadListData == null) {
+        globalService.notify();
         return;
       }
       threadListData.forEach((String key, dynamic data) {
@@ -38,16 +47,24 @@ class ThreadService implements BaseThreadService {
           });
         }
       });
-      _threads = fetchedThreadList;
+      threads = fetchedThreadList;
+      globalService.notify();
     }).catchError((error) {
       print(error.toString());
+      globalService.notify();
     });
   }
 }
 
 class ThreadServiceMock implements BaseThreadService {
+  List<ThreadModel> threads = new List<ThreadModel>();
+
+  ThreadServiceMock() {
+    getThreads();
+  }
+
   List<ThreadModel> getThreads() {
-    List<ThreadModel> threads = new List<ThreadModel>();
+    threads = new List<ThreadModel>();
     threads.add(ThreadModel(
         id: "1",
         name: "Technology",

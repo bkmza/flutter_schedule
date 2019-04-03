@@ -6,27 +6,34 @@ import '../services/global_service.dart';
 
 class Threads extends StatelessWidget {
   Widget _buildList(List<ThreadModel> threads, Function selectName) {
-    Widget nameCard = ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return new InkWell(
-            onTap: () {
-              String selectedName = threads[index].name;
-              selectName(selectedName);
-              Navigator.pushNamed<bool>(context, '/thread/' + selectedName)
-                  .then((_) => selectName(null));
-            },
-            child: ThreadCard(threads[index]));
-      },
-      itemCount: threads.length,
-    );
-    return nameCard;
+    Widget card;
+    if (threads.length > 0) {
+      card = ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          return new InkWell(
+              onTap: () {
+                String selectedName = threads[index].name;
+                selectName(selectedName);
+                Navigator.pushNamed<bool>(context, '/thread/' + selectedName)
+                    .then((_) => selectName(null));
+              },
+              child: ThreadCard(threads[index]));
+        },
+        itemCount: threads.length,
+      );
+    } else {
+      card = Center(
+        child: Text('No threads found, something went wrong'),
+      );
+    }
+    return card;
   }
 
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<GlobalService>(
         builder: (BuildContext context, Widget widget, GlobalService service) {
-      return _buildList(service.threadService.getThreads(), (String name) => {});
+      return _buildList(service.threadService.threads, (String name) => {});
     });
   }
 }

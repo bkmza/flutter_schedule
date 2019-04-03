@@ -7,6 +7,10 @@ import '../pages/speakers.dart';
 import '../services/global_service.dart';
 
 class HomePage extends StatefulWidget {
+  final GlobalService service;
+
+  HomePage(this.service);
+
   @override
   State<StatefulWidget> createState() {
     return _HomePageState();
@@ -15,11 +19,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final List<Widget> _children = [
-    ThreadListPage(),
-    SpeakersPage(),
-    ContactsPage()
-  ];
+  List<Widget> _children;
+
+  @override
+  initState() {
+    _children = [
+      ThreadListPage(widget.service),
+      SpeakersPage(),
+      ContactsPage()
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

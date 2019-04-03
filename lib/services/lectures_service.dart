@@ -1,20 +1,70 @@
-import 'package:flutter/material.dart';
-import '../shared/global_config.dart';
-import 'package:sprintf/sprintf.dart';
+import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 import '../models/lecture_model.dart';
+import './global_service.dart';
 
 abstract class BaseLectureService {
-  List<LectureModel> getAll();
+  void fetch();
+  List<LectureModel> lectures;
 }
 
 class LectureService implements BaseLectureService {
-  List<LectureModel> getAll() {
-    return List<LectureModel>();
+  final GlobalService globalService;
+  List<LectureModel> lectures = List<LectureModel>();
+  LectureService(this.globalService) {
+    fetch();
+  }
+  void fetch() {
+    fetchLectures();
+  }
+
+  Future<Null> fetchLectures() {
+    return http
+        .get('https://flutter-schedule.firebaseio.com/lectures.json')
+        .then<Null>((http.Response response) {
+      final List<LectureModel> fetchedList = [];
+      final Map<String, dynamic> data = json.decode(response.body);
+      if (data == null) {
+        globalService.notify();
+        return;
+      }
+      data.forEach((String key, dynamic data) {
+        if (key == 'results') {
+          List<Map<String, dynamic>> resultList = List.from(data);
+          resultList.forEach((item) {
+            fetchedList.add(
+              LectureModel(
+                id: item['id'],
+                threadId: item['threadId'],
+                speakerName: item['speakerName'],
+                title: item['title'],
+                description: item['description'],
+                startTime: DateTime.parse(item['startTime']),
+                endTime: DateTime.parse(item['endTime']),
+              ),
+            );
+          });
+        }
+      });
+      lectures = fetchedList;
+      globalService.notify();
+    }).catchError((error) {
+      print(error.toString());
+      globalService.notify();
+    });
   }
 }
 
 class LectureServiceMock implements BaseLectureService {
-  List<LectureModel> getAll() {
+  List<LectureModel> lectures;
+
+  LectureServiceMock() {
+    lectures = List<LectureModel>();
+    fetch();
+  }
+
+  void fetch() {
     List<LectureModel> schedules = new List<LectureModel>();
     for (var i = 0; i < 24; i++) {
       DateTime startTime =
@@ -29,7 +79,7 @@ class LectureServiceMock implements BaseLectureService {
           startTime: startTime,
           endTime: endTime));
     }
-    return schedules;
+    lectures = schedules;
   }
 
   final speakerNameSet = const {
@@ -74,7 +124,7 @@ class LectureServiceMock implements BaseLectureService {
         'Should people get identity chips implanted under their skin? How are brains different from computers?',
     'Self-driving vehicles':
         'Would having cars that drive themselves be a good or bad idea?',
-    'Work from home ':
+    'Work from home':
         'Should information technologies and Internet availability make work from home the norm?',
     'Relationships':
         'Has social media changed our relationships in a good or bad way?',

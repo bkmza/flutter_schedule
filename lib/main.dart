@@ -27,7 +27,7 @@ class _State extends State<ScheduleApp> {
     return ScopedModel<GlobalService>(
       model: _service,
       child: MaterialApp(
-        routes: {'/': (BuildContext context) => HomePage()},
+        routes: {'/': (BuildContext context) => HomePage(_service)},
         onGenerateRoute: (RouteSettings settings) {
           final List<String> pathElements = settings.name.split('/');
           if (pathElements[0] != '') {
@@ -49,7 +49,7 @@ class _State extends State<ScheduleApp> {
         },
         onUnknownRoute: (RouteSettings settings) {
           return MaterialPageRoute(
-              builder: (BuildContext context) => HomePage());
+              builder: (BuildContext context) => HomePage(_service));
         },
       ),
     );

@@ -14,6 +14,7 @@ class SvgNetworkImage extends StatelessWidget {
         child: new SvgPicture.network(
           url,
           semanticsLabel: 'Avatar',
+          width: 300.0,
           placeholderBuilder: (BuildContext context) => new Container(
               padding: const EdgeInsets.all(30.0),
               child: const CircularProgressIndicator()),
