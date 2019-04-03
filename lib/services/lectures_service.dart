@@ -5,7 +5,7 @@ import '../models/lecture_model.dart';
 import './global_service.dart';
 
 abstract class BaseLectureService {
-  void fetch();
+  Future<Null> fetch();
   List<LectureModel> lectures;
 }
 
@@ -15,11 +15,8 @@ class LectureService implements BaseLectureService {
   LectureService(this.globalService) {
     fetch();
   }
-  void fetch() {
-    fetchLectures();
-  }
 
-  Future<Null> fetchLectures() {
+  Future<Null> fetch() {
     return http
         .get('https://flutter-schedule.firebaseio.com/lectures.json')
         .then<Null>((http.Response response) {
@@ -64,7 +61,7 @@ class LectureServiceMock implements BaseLectureService {
     fetch();
   }
 
-  void fetch() {
+  Future<Null> fetch() {
     List<LectureModel> schedules = new List<LectureModel>();
     for (var i = 0; i < 24; i++) {
       DateTime startTime =
@@ -80,6 +77,7 @@ class LectureServiceMock implements BaseLectureService {
           endTime: endTime));
     }
     lectures = schedules;
+    return null;
   }
 
   final speakerNameSet = const {

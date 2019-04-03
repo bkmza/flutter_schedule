@@ -26,7 +26,7 @@ class GlobalService extends Model {
     _offlineMode = value;
     if (_offlineMode) {
       _imageServiceInstance = ImageServiceMock();
-      _threadServiceInstance = ThreadServiceMock();
+      _threadServiceInstance = ThreadServiceMock(this);
       _lectureServiceInstance = LectureServiceMock();
     } else {
       _imageServiceInstance = ImageService();

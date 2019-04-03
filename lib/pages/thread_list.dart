@@ -16,11 +16,17 @@ class ThreadListPage extends StatefulWidget {
 class _TreadListState extends State<ThreadListPage> {
   @override
   initState() {
+    widget._service.threadService.fetch();
     super.initState();
   }
 
   Widget _buildList() {
-    return Threads();
+    Widget content;
+    content = Threads();
+    return RefreshIndicator(
+      onRefresh: widget._service.lectureService.fetch,
+      child: content,
+    );
   }
 
   @override

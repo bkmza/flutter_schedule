@@ -1,27 +1,22 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
-import '../shared/global_config.dart';
-import 'package:sprintf/sprintf.dart';
 import '../models/thread_model.dart';
 import './global_service.dart';
 
 abstract class BaseThreadService {
   List<ThreadModel> threads;
-  List<ThreadModel> getThreads();
+  List<ThreadModel> fetch();
 }
 
 class ThreadService implements BaseThreadService {
   GlobalService globalService;
 
-  ThreadService(this.globalService) {
-    getThreads();
-  }
+  ThreadService(this.globalService);
 
   List<ThreadModel> threads = new List<ThreadModel>();
 
-  List<ThreadModel> getThreads() {
+  List<ThreadModel> fetch() {
     fetchThreads();
     return threads;
   }
@@ -58,12 +53,11 @@ class ThreadService implements BaseThreadService {
 
 class ThreadServiceMock implements BaseThreadService {
   List<ThreadModel> threads = new List<ThreadModel>();
+  GlobalService globalService;
 
-  ThreadServiceMock() {
-    getThreads();
-  }
+  ThreadServiceMock(this.globalService);
 
-  List<ThreadModel> getThreads() {
+  List<ThreadModel> fetch() {
     threads = new List<ThreadModel>();
     threads.add(ThreadModel(
         id: "1",
@@ -77,6 +71,7 @@ class ThreadServiceMock implements BaseThreadService {
         id: "3",
         name: "Workshops",
         imageURL: "assets/threads/thread_workshop_image.jpg"));
+    globalService.notify();
     return threads;
   }
 }
