@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>619947903982-aj8dqeeibn9kldlrf13pvngjqvruc56q.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.619947903982-aj8dqeeibn9kldlrf13pvngjqvruc56q</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGj-gdB1-rngpobQI-ZnCZZ8AlDuxjjOg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>619947903982</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bkmza.flutter-schedule</string>
+	<key>PROJECT_ID</key>
+	<string>flutter-schedule</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutter-schedule.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:619947903982:ios:9859e9a9b7d958a6</string>
+	<key>DATABASE_URL</key>
+	<string>https://flutter-schedule.firebaseio.com</string>
+</dict>
+</plist>

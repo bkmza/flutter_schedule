@@ -22,7 +22,7 @@ class LectureServiceMock implements BaseLectureService {
       DateTime endTime = startTime.add(Duration(minutes: 40));
       schedules.add(LectureModel(
           id: i.toString(),
-          threadId: "1",
+          threadId: (i % 8 + 1).toString(),
           speakerName: speakerNameSet.elementAt(i),
           title: lectureTopicsMap.keys.toList()[i],
           description: lectureTopicsMap.values.toList()[i],
