@@ -11,8 +11,12 @@ class ThreadCard extends StatelessWidget {
 
   Widget _buildLogoRow(Function getLogo) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-        child: getLogo(threadModel.imageURL));
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+      child: Hero(
+        tag: threadModel.id,
+        child: getLogo(threadModel.imageURL),
+      ),
+    );
   }
 
   Widget _buildTitleRow() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/lectures.dart';
 import '../services/global_service.dart';
+import '../widgets/lecture_card.dart';
 
 class LectureListPage extends StatefulWidget {
   final String threadId;
@@ -27,14 +28,36 @@ class _LectureListState extends State<LectureListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Schedule",
+    return WillPopScope(
+      onWillPop: () {
+        print('back button pressed');
+        Navigator.pop(context, false);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              backgroundColor: Colors.white,
+              expandedHeight: 256.0,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text("Schedules"),
+                background: Hero(
+                  tag: widget.threadId,
+                  child: widget.service.imageService
+                      .getThreadLogo("assets/threads/thread_tech_image.jpg"),
+                ),
+              ),
+            ),
+            SliverList(
+                delegate: SliverChildListDelegate(widget.service.lectureService
+                    .lecturesForThread(widget.threadId)
+                    .map((item) => LectureCard(item))
+                    .toList()))
+          ],
         ),
-        backgroundColor: Theme.of(context).accentColor,
       ),
-      body: _buildList(),
     );
   }
 }

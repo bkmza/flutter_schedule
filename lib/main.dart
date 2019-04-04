@@ -6,6 +6,7 @@ import './pages/lecture_list.dart';
 import './pages/settings/settings.dart';
 import './services/global_service.dart';
 import './helpers/custom_route.dart';
+import './shared/adaptive_theme.dart';
 
 void main() {
   runApp(ScheduleApp());
@@ -27,6 +28,7 @@ class _State extends State<ScheduleApp> {
     return ScopedModel<GlobalService>(
       model: _service,
       child: MaterialApp(
+        theme: getAdaptiveThemeData(context),
         routes: {'/': (BuildContext context) => HomePage(_service)},
         onGenerateRoute: (RouteSettings settings) {
           final List<String> pathElements = settings.name.split('/');
@@ -36,7 +38,8 @@ class _State extends State<ScheduleApp> {
           if (pathElements[1] == 'thread') {
             final String threadId = pathElements[2];
             return CustomRoute<bool>(
-              builder: (BuildContext context) => LectureListPage(threadId, _service),
+              builder: (BuildContext context) =>
+                  LectureListPage(threadId, _service),
             );
           }
           if (pathElements[1] == 'settings') {
