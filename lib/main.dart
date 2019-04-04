@@ -36,7 +36,7 @@ class _State extends State<ScheduleApp> {
           if (pathElements[1] == 'thread') {
             final String threadId = pathElements[2];
             return CustomRoute<bool>(
-              builder: (BuildContext context) => LectureListPage(threadId),
+              builder: (BuildContext context) => LectureListPage(threadId, _service),
             );
           }
           if (pathElements[1] == 'settings') {

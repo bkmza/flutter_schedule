@@ -12,7 +12,9 @@ abstract class BaseThreadService {
 class ThreadService implements BaseThreadService {
   GlobalService globalService;
 
-  ThreadService(this.globalService);
+  ThreadService(this.globalService) {
+    fetch();
+  }
 
   List<ThreadModel> threads = new List<ThreadModel>();
 
@@ -55,7 +57,9 @@ class ThreadServiceMock implements BaseThreadService {
   List<ThreadModel> threads = new List<ThreadModel>();
   GlobalService globalService;
 
-  ThreadServiceMock(this.globalService);
+  ThreadServiceMock(this.globalService) {
+    fetch();
+  }
 
   List<ThreadModel> fetch() {
     threads = new List<ThreadModel>();
