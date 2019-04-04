@@ -8,11 +8,9 @@ class SvgImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: new SvgPicture.asset(
-        path,
-        width: 300.0,
-      ),
+    return new SvgPicture.asset(
+      path,
+      width: 300.0,
     );
   }
 }

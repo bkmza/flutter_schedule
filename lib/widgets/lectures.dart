@@ -6,19 +6,16 @@ import './lecture_card.dart';
 import '../services/global_service.dart';
 
 class Lectures extends StatelessWidget {
-  Widget _buildList(List<LectureModel> lectures, Function selectName) {
+  final String threadId;
+
+  Lectures(this.threadId);
+
+  Widget _buildList(List<LectureModel> lectures) {
     Widget card;
     if (lectures.length > 0) {
       card = ListView.builder(
         itemBuilder: (BuildContext context, int index) {
-          return new InkWell(
-              onTap: () {
-                String selectedLectureId = lectures[index].id;
-                Navigator.pushNamed<bool>(
-                        context, '/lecture/' + selectedLectureId)
-                    .then((_) => selectName(null));
-              },
-              child: LectureCard(lectures[index]));
+          return LectureCard(lectures[index]);
         },
         itemCount: lectures.length,
       );
@@ -34,7 +31,7 @@ class Lectures extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModelDescendant<GlobalService>(
         builder: (BuildContext context, Widget widget, GlobalService service) {
-      return _buildList(service.lectureService.lectures, (String name) => {});
+      return _buildList(service.lectureService.lecturesForThread(threadId));
     });
   }
 }

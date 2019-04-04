@@ -12,8 +12,8 @@ class Threads extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return new InkWell(
               onTap: () {
-                String name = threads[index].name;
-                Navigator.pushNamed<bool>(context, '/thread/' + name);
+                Navigator.pushNamed<bool>(
+                    context, '/thread/' + threads[index].id);
               },
               child: ThreadCard(threads[index]));
         },

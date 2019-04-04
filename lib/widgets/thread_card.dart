@@ -17,14 +17,14 @@ class ThreadCard extends StatelessWidget {
 
   Widget _buildTitleRow() {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Flexible(
               child: Center(
                 child: Text(
-                  threadModel.name,
+                  threadModel.name.toUpperCase(),
                   style: TextStyle(fontSize: 26.0),
                 ),
               ),

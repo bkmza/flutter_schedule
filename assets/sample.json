@@ -1,0 +1,234 @@
+{
+  "threads": {
+    "count": 3,
+    "results": [
+      {
+        "id": "1",
+        "name": "technology",
+        "imageURL": "https://cdn.pixabay.com/photo/2017/09/20/16/53/smart-home-2769210_1280.jpg"
+      },
+      {
+        "id": "2",
+        "name": "people",
+        "imageURL": "https://cdn.pixabay.com/photo/2017/11/30/09/03/business-2987962_1280.jpg"
+      },
+      {
+        "id": "3",
+        "name": "workshops",
+        "imageURL": "https://cdn.pixabay.com/photo/2016/04/22/10/17/workshop-1345512_1280.jpg"
+      }
+    ]
+  },
+  "lectures": {
+    "count": 24,
+    "results": [
+      {
+        "id": "1",
+        "threadId": "1",
+        "speakerName": "jack",
+        "title": "Living in a technological world",
+        "description": "What are the long-term effects of living in a technological world? Are these mostly negative or positive?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "2",
+        "threadId": "1",
+        "speakerName": "jacques",
+        "title": "World problems",
+        "description": "What is the most important new technology for solving world problems?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "3",
+        "threadId": "1",
+        "speakerName": "jai",
+        "title": "Make the world bigger",
+        "description": "How do social media, texting, cell phones, and the Internet make the world bigger? Smaller?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "4",
+        "threadId": "1",
+        "speakerName": "jake",
+        "title": "Technology is changing so quickly",
+        "description": "Technology is changing so quickly that we are frequently using computers, software programs, and other technologies that have frustrating glitches and problems. Is there a solution?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "5",
+        "threadId": "1",
+        "speakerName": "james",
+        "title": "Digital learning",
+        "description": "How is digital learning going to change schools and education?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "6",
+        "threadId": "1",
+        "speakerName": "jana",
+        "title": "How will technology change our lives in twenty years?",
+        "description": "Should people get identity chips implanted under their skin? How are brains different from computers?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "7",
+        "threadId": "1",
+        "speakerName": "jaqueline",
+        "title": "Self-driving vehicles",
+        "description": "Would having cars that drive themselves be a good or bad idea?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "8",
+        "threadId": "2",
+        "speakerName": "jean",
+        "title": "Work from home",
+        "description": "Should information technologies and Internet availability make work from home the norm?",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "9",
+        "threadId": "2",
+        "speakerName": "jed",
+        "title": "Relationships",
+        "description": "Has social media changed our relationships in a good or bad way?",
+        "startTime": "2019-06-01 11:00",
+        "endTime": "2019-06-01 11:40"
+      },
+      {
+        "id": "10",
+        "threadId": "2",
+        "speakerName": "jenni",
+        "title": "Social media",
+        "description": "How important is it to monitor and limit our social media intake?",
+        "startTime": "2019-06-01 12:00",
+        "endTime": "2019-06-01 12:40"
+      },
+      {
+        "id": "11",
+        "threadId": "2",
+        "speakerName": "jeri",
+        "title": "Technology addiction",
+        "description": "Is addiction to technology something we should worry about?",
+        "startTime": "2019-06-01 13:00",
+        "endTime": "2019-06-01 13:40"
+      },
+      {
+        "id": "12",
+        "threadId": "2",
+        "speakerName": "jerry",
+        "title": "When is texting rude",
+        "description": "When is texting rude? Has texting made this generation less respectful of other people? Who decides?",
+        "startTime": "2019-06-01 14:00",
+        "endTime": "2019-06-01 14:40"
+      },
+      {
+        "id": "13",
+        "threadId": "2",
+        "speakerName": "jess",
+        "title": "Social networking profiles",
+        "description": "How should people manage their social networking profiles? How important is this?",
+        "startTime": "2019-06-01 15:00",
+        "endTime": "2019-06-01 15:40"
+      },
+      {
+        "id": "14",
+        "threadId": "2",
+        "speakerName": "jocelyn",
+        "title": "Internet",
+        "description": "What is the next level for the Internet? How can the Internet be changed to make it better?",
+        "startTime": "2019-06-01 16:00",
+        "endTime": "2019-06-01 16:40"
+      },
+      {
+        "id": "15",
+        "threadId": "2",
+        "speakerName": "jodi",
+        "title": "Computer language",
+        "description": "If there is a new computer language to be invented, what does it need to do to be better than the languages we now have?",
+        "startTime": "2019-06-01 17:00",
+        "endTime": "2019-06-01 17:40"
+      },
+      {
+        "id": "16",
+        "threadId": "3",
+        "speakerName": "joe",
+        "title": "Robots",
+        "description": "How are robots changing health care?",
+        "startTime": "2019-06-01 17:00",
+        "endTime": "2019-06-01 17:40"
+      },
+      {
+        "id": "17",
+        "threadId": "3",
+        "speakerName": "jolee",
+        "title": "Performance management",
+        "description": "",
+        "startTime": "2019-06-01 10:00",
+        "endTime": "2019-06-01 10:40"
+      },
+      {
+        "id": "18",
+        "threadId": "3",
+        "speakerName": "jon",
+        "title": "Team collaboration and project management",
+        "description": "",
+        "startTime": "2019-06-01 11:00",
+        "endTime": "2019-06-01 11:40"
+      },
+      {
+        "id": "19",
+        "threadId": "3",
+        "speakerName": "jordan",
+        "title": "Team collaboration and project management",
+        "description": "",
+        "startTime": "2019-06-01 12:00",
+        "endTime": "2019-06-01 12:40"
+      },
+      {
+        "id": "20",
+        "threadId": "3",
+        "speakerName": "josh",
+        "title": "Agile methodologies",
+        "description": "",
+        "startTime": "2019-06-01 13:00",
+        "endTime": "2019-06-01 13:40"
+      },
+      {
+        "id": "21",
+        "threadId": "3",
+        "speakerName": "josephine",
+        "title": "Developing purpose and value inside an organization",
+        "description": "josh",
+        "startTime": "2019-06-01 14:00",
+        "endTime": "2019-06-01 14:40"
+      },
+      {
+        "id": "22",
+        "threadId": "3",
+        "speakerName": "jude",
+        "title": "Self-organization and delegation",
+        "description": "",
+        "startTime": "2019-06-01 15:00",
+        "endTime": "2019-06-01 15:40"
+      },
+      {
+        "id": "23",
+        "threadId": "3",
+        "speakerName": "julie",
+        "title": "Change management and organizational transformation",
+        "description": "",
+        "startTime": "2019-06-01 16:00",
+        "endTime": "2019-06-01 16:40"
+      }
+    ]
+  }
+}

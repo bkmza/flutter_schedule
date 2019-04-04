@@ -22,7 +22,7 @@ class _LectureListState extends State<LectureListPage> {
   }
 
   Widget _buildList() {
-    return Lectures();
+    return Lectures(widget.threadId);
   }
 
   @override

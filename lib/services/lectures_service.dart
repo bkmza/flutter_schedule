@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:async';
+import 'dart:math';
 import 'package:http/http.dart' as http;
 import '../models/lecture_model.dart';
 import './global_service.dart';
 
 abstract class BaseLectureService {
   Future<Null> fetch();
+  List<LectureModel> lecturesForThread(String threadId);
+
   List<LectureModel> lectures;
 }
 
@@ -14,6 +17,10 @@ class LectureService implements BaseLectureService {
   List<LectureModel> lectures = List<LectureModel>();
   LectureService(this.globalService) {
     fetch();
+  }
+
+  List<LectureModel> lecturesForThread(String threadId) {
+    return lectures.where((item) => item.threadId == threadId).toList();
   }
 
   Future<Null> fetch() {
@@ -61,6 +68,10 @@ class LectureServiceMock implements BaseLectureService {
     fetch();
   }
 
+  List<LectureModel> lecturesForThread(String threadId) {
+    return lectures.where((item) => item.threadId == threadId).toList();
+  }
+
   Future<Null> fetch() {
     List<LectureModel> schedules = new List<LectureModel>();
     for (var i = 0; i < 24; i++) {
@@ -69,7 +80,7 @@ class LectureServiceMock implements BaseLectureService {
       DateTime endTime = startTime.add(Duration(minutes: 40));
       schedules.add(LectureModel(
           id: i.toString(),
-          threadId: (i % 8 + 1).toString(),
+          threadId: ((i + 1) / 8).ceil().toString(),
           speakerName: speakerNameSet.elementAt(i),
           title: lectureTopicsMap.keys.toList()[i],
           description: lectureTopicsMap.values.toList()[i],

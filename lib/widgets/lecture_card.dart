@@ -8,7 +8,6 @@ import '../widgets/ui_elements/tag_default.dart';
 
 class LectureCard extends StatelessWidget {
   final LectureModel lectureModel;
-  final String defaultAvatarImagePath = 'assets/cartman.svg';
 
   LectureCard(this.lectureModel);
 
