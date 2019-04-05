@@ -35,13 +35,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Insights'),
+        title: Text(
+          'Insights',
+          style: TextStyle(color: Colors.white, fontSize: 26),
+        ),
+        backgroundColor: Color.fromRGBO(46, 157, 180, 1),
         actions: <Widget>[
           ScopedModelDescendant<GlobalService>(
             builder:
                 (BuildContext context, Widget widget, GlobalService service) {
               return IconButton(
-                icon: Icon(Icons.settings),
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
                 onPressed: () => {
                       Navigator.pushNamed<bool>(context, '/settings'),
                     },
@@ -53,6 +60,7 @@ class _HomePageState extends State<HomePage> {
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
+        fixedColor: Color.fromRGBO(46, 157, 180, 1),
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
