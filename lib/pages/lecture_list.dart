@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sprintf/sprintf.dart';
+
 import '../widgets/lectures.dart';
 import '../services/global_service.dart';
 import '../widgets/lecture_card.dart';
+import '../models/thread_model.dart';
 
 class LectureListPage extends StatefulWidget {
-  final String threadId;
+  final ThreadModel threadModel;
   final GlobalService service;
 
-  LectureListPage(this.threadId, this.service);
+  LectureListPage(this.threadModel, this.service);
 
   @override
   State<StatefulWidget> createState() {
@@ -23,7 +26,7 @@ class _LectureListState extends State<LectureListPage> {
   }
 
   Widget _buildList() {
-    return Lectures(widget.threadId);
+    return Lectures(widget.threadModel.id);
   }
 
   @override
@@ -39,20 +42,23 @@ class _LectureListState extends State<LectureListPage> {
           slivers: <Widget>[
             SliverAppBar(
               backgroundColor: Colors.white,
-              expandedHeight: 256.0,
+              expandedHeight: 300.0,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
-                title: Text("Schedules"),
+                title: Text(
+                  sprintf("%s", [widget.threadModel.name.toUpperCase()]),
+                  style: TextStyle(fontSize: 15),
+                ),
                 background: Hero(
-                  tag: widget.threadId,
+                  tag: widget.threadModel.id,
                   child: widget.service.imageService
-                      .getThreadLogo("assets/threads/thread_tech_image.jpg"),
+                      .getThreadLogo(widget.threadModel.imageURL),
                 ),
               ),
             ),
             SliverList(
                 delegate: SliverChildListDelegate(widget.service.lectureService
-                    .lecturesForThread(widget.threadId)
+                    .lecturesForThread(widget.threadModel.id)
                     .map((item) => LectureCard(item))
                     .toList()))
           ],
