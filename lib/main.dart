@@ -6,6 +6,7 @@ import './pages/settings/settings.dart';
 import './pages/lecture_list.dart';
 import './services/global_service.dart';
 import './helpers/custom_route.dart';
+import './helpers/thread_route.dart';
 import './shared/adaptive_theme.dart';
 import './models/thread_model.dart';
 
@@ -38,7 +39,7 @@ class _State extends State<ScheduleApp> {
           }
           if (pathElements[1] == 'thread') {
             final String threadId = pathElements[2];
-            return CustomRoute<bool>(
+            return ThreadRoute<bool>(
               builder: (BuildContext context) => LectureListPage(
                   _service.threadService.threads
                       .firstWhere((ThreadModel item) => item.id == threadId),

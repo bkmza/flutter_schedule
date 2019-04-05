@@ -42,7 +42,7 @@ class _LectureListState extends State<LectureListPage> {
           slivers: <Widget>[
             SliverAppBar(
               backgroundColor: Colors.white,
-              expandedHeight: 300.0,
+              expandedHeight: 250.0,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
@@ -51,8 +51,11 @@ class _LectureListState extends State<LectureListPage> {
                 ),
                 background: Hero(
                   tag: widget.threadModel.id,
-                  child: widget.service.imageService
-                      .getThreadLogo(widget.threadModel.imageURL),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 50.0),
+                    child: widget.service.imageService
+                        .getThreadLogo(widget.threadModel.imageURL),
+                  ),
                 ),
               ),
             ),
