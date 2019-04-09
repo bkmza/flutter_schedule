@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../../services/global_service.dart';
+import '../../helpers/app_mode.dart';
 
 class SettingsPage extends StatefulWidget {
   final bool isOfflineMode;
@@ -23,13 +24,13 @@ class _SettingsState extends State<SettingsPage> {
     super.initState();
   }
 
-  Widget _buildMockEnableRow(Function offlineModeAction) {
+  Widget _buildMockEnableRow(Function setAppModeAction) {
     return new SwitchListTile(
       value: _offlineMode,
       onChanged: (bool value) {
         setState(() {
           _offlineMode = value;
-          offlineModeAction(value);
+          setAppModeAction(value ? AppModeType.offline : AppModeType.online);
         });
       },
       title: new Text('Offline mode (local data generation)',
@@ -57,7 +58,7 @@ class _SettingsState extends State<SettingsPage> {
             return Container(
               padding: new EdgeInsets.all(15.0),
               child: Column(
-                children: <Widget>[_buildMockEnableRow(service.setOfflineMode)],
+                children: <Widget>[_buildMockEnableRow(service.setAppMode)],
               ),
             );
           },

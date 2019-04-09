@@ -3,15 +3,16 @@ import 'package:scoped_model/scoped_model.dart';
 import './image_service.dart';
 import './threads_service.dart';
 import './lectures_service.dart';
+import '../helpers/app_mode.dart';
 
 class GlobalService extends Model {
   BaseImageService _imageServiceInstance;
   BaseThreadService _threadServiceInstance;
   BaseLectureService _lectureServiceInstance;
-  bool _offlineMode;
+  AppModeType _appModeType;
 
   GlobalService() {
-    setOfflineMode(true);
+    setAppMode(AppModeType.offline);
   }
 
   BaseImageService get imageService => _imageServiceInstance;
@@ -19,12 +20,12 @@ class GlobalService extends Model {
   BaseLectureService get lectureService => _lectureServiceInstance;
 
   bool get isOfflineMode {
-    return _offlineMode;
+    return _appModeType == AppModeType.offline;
   }
 
-  void setOfflineMode(bool value) {
-    _offlineMode = value;
-    if (_offlineMode) {
+  void setAppMode(AppModeType type) {
+    _appModeType = type;
+    if (_appModeType == AppModeType.offline) {
       _imageServiceInstance = ImageServiceMock();
       _threadServiceInstance = ThreadServiceMock(this);
       _lectureServiceInstance = LectureServiceMock();

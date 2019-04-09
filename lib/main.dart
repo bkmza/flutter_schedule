@@ -39,7 +39,7 @@ class _State extends State<ScheduleApp> {
           }
           if (pathElements[1] == 'thread') {
             final String threadId = pathElements[2];
-            return ThreadRoute<bool>(
+            return MaterialPageRoute<bool>(
               builder: (BuildContext context) => LectureListPage(
                   _service.threadService.threads
                       .firstWhere((ThreadModel item) => item.id == threadId),
