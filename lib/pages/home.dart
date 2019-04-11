@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
-import '../pages/thread_list.dart';
+import '../pages/threads/thread_list.dart';
+import '../pages/threads/thread_slider.dart';
 import '../pages/contacts.dart';
 import '../pages/speakers.dart';
 import '../services/global_service.dart';
@@ -19,15 +20,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+  bool _isListMode = true;
   List<Widget> _children;
 
   @override
   initState() {
-    _children = [
-      ThreadListPage(widget.service),
-      SpeakersPage(),
-      ContactsPage()
-    ];
+    initPages();
     super.initState();
   }
 
@@ -54,7 +52,14 @@ class _HomePageState extends State<HomePage> {
                     },
               );
             },
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.cached,
+              color: Colors.white,
+            ),
+            onPressed: changeViewMode,
+          ),
         ],
       ),
       body: _children[_currentIndex],
@@ -68,8 +73,8 @@ class _HomePageState extends State<HomePage> {
             title: new Text('Schedule'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.people),
-            title: new Text('Speakers'),
+            icon: new Icon(Icons.accessibility),
+            title: new Text('Fun'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
@@ -84,5 +89,22 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _currentIndex = index;
     });
+  }
+
+  void changeViewMode() {
+    setState(() {
+      _isListMode = !_isListMode;
+      initPages();
+    });
+  }
+
+  void initPages() {
+    _children = [
+      _isListMode
+          ? ThreadListPage(widget.service)
+          : ThreadSliderPage(widget.service),
+      SpeakersPage(),
+      ContactsPage()
+    ];
   }
 }

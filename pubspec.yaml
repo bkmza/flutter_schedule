@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_svg: ^0.12.2
   flare_flutter: ^1.3.6
+  nima: ^1.0.2
   sprintf: ^4.0.2
   scoped_model: ^1.0.1
   date_format: ^1.0.6
@@ -88,6 +89,8 @@ flutter:
     - assets/threads/thread_tech_image.jpg
     - assets/threads/thread_workshop_image.jpg
     - assets/threads/thread_default_image.jpg
+    - assets/animation/Robot.png
+    - assets/animation/Robot.nima
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

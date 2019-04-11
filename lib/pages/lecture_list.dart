@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sprintf/sprintf.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-import '../widgets/lectures.dart';
+import '../models/lecture_model.dart';
 import '../services/global_service.dart';
 import '../widgets/lecture_card.dart';
 import '../models/thread_model.dart';
@@ -23,10 +24,6 @@ class _LectureListState extends State<LectureListPage> {
   initState() {
     widget.service.lectureService.fetch();
     super.initState();
-  }
-
-  Widget _buildList() {
-    return Lectures(widget.threadModel.id);
   }
 
   @override
@@ -52,7 +49,8 @@ class _LectureListState extends State<LectureListPage> {
                 background: Hero(
                   tag: widget.threadModel.id,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 50.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 50.0, vertical: 50.0),
                     child: widget.service.imageService
                         .getThreadLogo(widget.threadModel.imageURL),
                   ),
@@ -68,5 +66,34 @@ class _LectureListState extends State<LectureListPage> {
         ),
       ),
     );
+  }
+}
+
+class Lectures extends StatelessWidget {
+  final String threadId;
+
+  Lectures(this.threadId);
+
+  @override
+  Widget build(BuildContext context) {
+    return ScopedModelDescendant<GlobalService>(
+        builder: (BuildContext context, Widget widget, GlobalService service) {
+      List<LectureModel> lectures =
+          service.lectureService.lecturesForThread(threadId);
+      Widget card;
+      if (lectures.length > 0) {
+        card = ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return LectureCard(lectures[index]);
+          },
+          itemCount: lectures.length,
+        );
+      } else {
+        card = Center(
+          child: Text('No speakers found, something went wrong'),
+        );
+      }
+      return card;
+    });
   }
 }

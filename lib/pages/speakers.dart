@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nima/nima_actor.dart';
 
 class SpeakersPage extends StatefulWidget {
   @override
@@ -13,14 +14,12 @@ class _SpeakersState extends State<SpeakersPage> {
     super.initState();
   }
 
-  Widget _buildPage() {
-    return Container();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildPage(),
-    );
+        body: new NimaActor("assets/animation/Robot",
+            alignment: Alignment.center,
+            fit: BoxFit.contain,
+            animation: "Flight"));
   }
 }

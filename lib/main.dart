@@ -6,7 +6,6 @@ import './pages/settings/settings.dart';
 import './pages/lecture_list.dart';
 import './services/global_service.dart';
 import './helpers/custom_route.dart';
-import './helpers/thread_route.dart';
 import './shared/adaptive_theme.dart';
 import './models/thread_model.dart';
 
