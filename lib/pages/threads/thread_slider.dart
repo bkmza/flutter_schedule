@@ -49,7 +49,7 @@ class _TreadSliderState extends State<ThreadSliderPage> {
                   return Container();
                 },
               ),
-            )
+            ),
           ],
         ),
       ])),
@@ -115,7 +115,8 @@ class CardSliderWidget extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: <Widget>[
-                      Image.asset(service.threadService.threads[i].imageURL, fit: BoxFit.cover),
+                      Image.asset(service.threadService.threads[i].imageURL,
+                          fit: BoxFit.cover),
                       Align(
                         alignment: Alignment.bottomLeft,
                         child: Column(

@@ -60,7 +60,6 @@ flutter:
   assets:
     - assets/navbar_logo.svg
     - assets/icon.png
-    - assets/human_animation.flr
     - assets/speakers/jack.svg
     - assets/speakers/jacques.svg
     - assets/speakers/jai.svg
@@ -91,6 +90,8 @@ flutter:
     - assets/threads/thread_default_image.jpg
     - assets/animation/Robot.png
     - assets/animation/Robot.nima
+    - assets/animation/human_animation.flr
+    - assets/animation/teddy.flr
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

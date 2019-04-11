@@ -3,7 +3,7 @@ import 'package:scoped_model/scoped_model.dart';
 
 import './pages/home.dart';
 import './pages/settings/settings.dart';
-import './pages/lecture_list.dart';
+import './pages/lectures/lecture_list.dart';
 import './services/global_service.dart';
 import './helpers/custom_route.dart';
 import './shared/adaptive_theme.dart';

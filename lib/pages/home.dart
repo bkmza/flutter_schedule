@@ -4,7 +4,7 @@ import 'package:scoped_model/scoped_model.dart';
 import '../pages/threads/thread_list.dart';
 import '../pages/threads/thread_slider.dart';
 import '../pages/contacts.dart';
-import '../pages/speakers.dart';
+import '../pages/teddy.dart';
 import '../services/global_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.accessibility),
-            title: new Text('Fun'),
+            title: new Text('Teddy'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
       _isListMode
           ? ThreadListPage(widget.service)
           : ThreadSliderPage(widget.service),
-      SpeakersPage(),
+      TeddyPage(),
       ContactsPage()
     ];
   }

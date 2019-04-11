@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../shared/global_config.dart';
-import '../widgets/ui_elements/svg_network_image.dart';
-import '../widgets/ui_elements/svg_image.dart';
+import '../widgets/svg_network_image.dart';
+import '../widgets/svg_image.dart';
 import 'package:sprintf/sprintf.dart';
 
 abstract class BaseImageService {
