@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'dart:math';
+import 'package:flare_flutter/flare_actor.dart';
 
 import '../../services/global_service.dart';
+import '../../models/thread_model.dart';
 
 class ThreadSliderPage extends StatefulWidget {
   final GlobalService service;
@@ -16,11 +17,11 @@ class ThreadSliderPage extends StatefulWidget {
 }
 
 class _TreadSliderState extends State<ThreadSliderPage> {
-  var currentPage = 0.0;
+  var currentPage;
 
   @override
   initState() {
-    widget.service.threadService.fetch();
+    currentPage = widget.service.threadService.threads.length - 1;
     super.initState();
   }
 
@@ -39,7 +40,8 @@ class _TreadSliderState extends State<ThreadSliderPage> {
           child: Column(children: <Widget>[
         Stack(
           children: <Widget>[
-            CardSliderWidget(currentPage, widget.service),
+            CardSliderWidget(currentPage,
+                widget.service.threadService.threads.reversed.toList()),
             Positioned.fill(
               child: PageView.builder(
                 itemCount: widget.service.threadService.threads.length,
@@ -58,14 +60,18 @@ class _TreadSliderState extends State<ThreadSliderPage> {
 }
 
 class CardSliderWidget extends StatelessWidget {
-  final GlobalService service;
+  final List<ThreadModel> threads;
   var currentPage;
-  var padding = 20.0;
-  var verticalInset = 20.0;
-  var cardAspectRatio = 12.0 / 16.0;
-  var widgetAspectRatioFactor = 1.2;
+  final double padding = 20.0;
+  final double verticalInset = 20.0;
+  final double cardAspectRatio = 12.0 / 16.0;
+  final double widgetAspectRatioFactor = 1.2;
 
-  CardSliderWidget(this.currentPage, this.service);
+  final List<Color> colors = List<Color>();
+
+  CardSliderWidget(this.currentPage, this.threads) {
+    colors.addAll([Colors.lightBlue, Colors.purple, Colors.white].reversed);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +92,7 @@ class CardSliderWidget extends StatelessWidget {
 
         List<Widget> cardList = new List();
 
-        for (var i = 0; i < service.threadService.threads.length; i++) {
+        for (var i = 0; i < threads.length; i++) {
           var delta = i - currentPage;
           bool isOnRight = delta > 0;
 
@@ -104,9 +110,9 @@ class CardSliderWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(16.0),
               child: Container(
-                decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                decoration: BoxDecoration(color: colors[i], boxShadow: [
                   BoxShadow(
-                      color: Colors.black12,
+                      color: Colors.black,
                       offset: Offset(3.0, 6.0),
                       blurRadius: 10.0)
                 ]),
@@ -115,40 +121,26 @@ class CardSliderWidget extends StatelessWidget {
                   child: Stack(
                     fit: StackFit.expand,
                     children: <Widget>[
-                      Image.asset(service.threadService.threads[i].imageURL,
-                          fit: BoxFit.cover),
+                      new FlareActor(threads[i].animatedImageURL,
+                          alignment: Alignment.center,
+                          fit: BoxFit.cover,
+                          animation: threads[i].animationName),
                       Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: 8.0),
-                              child: Text(service.threadService.threads[i].name,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25.0,
-                                      fontFamily: "SF-Pro-Text-Regular")),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 12.0, bottom: 12.0),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 22.0, vertical: 6.0),
-                                decoration: BoxDecoration(
-                                    color: Colors.blueAccent,
-                                    borderRadius: BorderRadius.circular(20.0)),
-                                child: Text("Read Later",
-                                    style: TextStyle(color: Colors.white)),
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 60),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              new RotationTransition(
+                                turns: new AlwaysStoppedAnimation(-15 / 360),
+                                child: Text(threads[i].name,
+                                    style: TextStyle(
+                                        color: colors[i], fontSize: 40.0)),
                               ),
-                            )
-                          ],
+                            ],
+                          ),
                         ),
                       )
                     ],

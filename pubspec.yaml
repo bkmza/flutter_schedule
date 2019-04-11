@@ -88,10 +88,14 @@ flutter:
     - assets/threads/thread_tech_image.jpg
     - assets/threads/thread_workshop_image.jpg
     - assets/threads/thread_default_image.jpg
-    - assets/animation/Robot.png
-    - assets/animation/Robot.nima
     - assets/animation/human_animation.flr
     - assets/animation/teddy.flr
+    - assets/animation/filip.flr
+    - assets/animation/rocket.flr
+    - assets/animation/nothing.flr
+    - assets/animation/house.flr
+    - assets/animation/wheather.flr
+    - assets/animation/earth.flr
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

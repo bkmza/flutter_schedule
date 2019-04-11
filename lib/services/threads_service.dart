@@ -40,7 +40,8 @@ class ThreadService implements BaseThreadService {
             fetchedThreadList.add(ThreadModel(
                 id: item['id'],
                 name: item['name'],
-                imageURL: item['imageURL']));
+                imageURL: item['imageURL'],
+                animatedImageURL: ""));
           });
         }
       });
@@ -66,15 +67,21 @@ class ThreadServiceMock implements BaseThreadService {
     threads.add(ThreadModel(
         id: "1",
         name: "Technology",
-        imageURL: "assets/threads/thread_tech_image.jpg"));
+        imageURL: "assets/threads/thread_tech_image.jpg",
+        animatedImageURL: "assets/animation/rocket.flr",
+        animationName: "idle"));
     threads.add(ThreadModel(
         id: "2",
         name: "People",
-        imageURL: "assets/threads/thread_people_image.jpg"));
+        imageURL: "assets/threads/thread_people_image.jpg",
+        animatedImageURL: "assets/animation/house.flr",
+        animationName: "Demo Mode"));
     threads.add(ThreadModel(
         id: "3",
         name: "Workshops",
-        imageURL: "assets/threads/thread_workshop_image.jpg"));
+        imageURL: "assets/threads/thread_workshop_image.jpg",
+        animatedImageURL: "assets/animation/nothing.flr",
+        animationName: "peace"));
     globalService.notify();
     return threads;
   }

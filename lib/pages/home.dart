@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Insights',
+          'Skillutter',
           style: TextStyle(color: Colors.white, fontSize: 26),
         ),
         backgroundColor: Color.fromRGBO(46, 157, 180, 1),
